@@ -5,6 +5,8 @@ import (
 	"go-basics/internal/calculator"
 )
 
+// Go doesn't have class and it uses struct instead
+// DAO - Data Access Object
 type User struct {
 	ID   int
 	Name string
@@ -31,6 +33,10 @@ func main() {
 	const isStudent bool = true
 	const heightMeters float64 = 1.30
 
+	//Flera konstanter kan deklareras på samma rad
+	const country, code = "Sweden", 46
+	fmt.P
+
 	fmt.Println("const variables", name, age, isStudent, heightMeters)
 
 	// var declaration
@@ -48,6 +54,16 @@ func main() {
 	heightMeters2 := 1.30
 
 	fmt.Println("without var declaration", name2, age2, isStudent2, heightMeters2)
+
+	// string
+	// Rå sträng (raw string) Skrivs med backticks: `...`
+	// Rå sträng (kan innehålla flera rader, tolkar inte \n, \t)
+	var bio = `Yahya Hussein har programmerat sen han var 16.
+	Det är fortfarande det roligaste han vet.`
+
+	fmt.Println("content of raw string is: =======================")
+	fmt.Println(bio)
+	fmt.Println("=================================================")
 
 	// declaring of array
 	var arr [3]int
