@@ -2,18 +2,41 @@ package main
 
 import (
 	"fmt"
-	"go-basics/internal/calculator"
+	"sort"
 )
 
 func main() {
 
-	fmt.Println(calculator.Add(2,3))
-	fmt.Println(calculator.Subtract(3,1))
+	// range
+	ages := map[string]int{
+		"Yahya": 30,
+		"Sara":  30,
+	}
 
+	keys := make([]string, 0, len(ages))
+	for k := range ages{
+		keys = append(keys, k)
+	}
+
+	sort.Strings(keys)
+
+
+	for _, k := range keys {
+		fmt.Println(k,"->", ages[k])
+	}
+
+
+
+	/*
+		nums := []int{10, 20, 30}
+
+		for i := range nums {
+			nums[i] = nums[i] *10
+		}
+		fmt.Println(nums)
+	*/
 
 }
-
-
 
 /*
 func main() {
@@ -201,6 +224,7 @@ func main() {
 /*
 
 func main() {
+
 	score := 71
 
 	if x := score - 70; x > 0 {
