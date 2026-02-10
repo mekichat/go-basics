@@ -21,7 +21,7 @@ func main() {
 
 	fmt.Println("User registry CLI")
 	
-	fmt.Println("Create, List, Exit")
+	fmt.Println("Create, List ,Delete ,Update , Exit")
 
 
 	for {
@@ -61,6 +61,73 @@ func main() {
 
 			for _, u := range users {
 				fmt.Println(u.ID, u.Name, u.Age)
+			}
+
+
+		case "Delete":
+			fmt.Print("Skriv ID på användaren du vill radera: ")
+		
+			id, _ := reader.ReadString('\n')
+			id = strings.TrimSpace(id)
+
+
+			idInput, err := strconv.Atoi(id)
+
+			if err != nil {
+				fmt.Println("ID måste vara ett numbber")
+				continue
+			}
+
+			deleted := userService.DeleteUser(idInput)
+
+			if deleted {
+				fmt.Println("Användaren raderad")
+			} else {
+					fmt.Println("Användaren hittades inte")	
+			}
+
+
+		case "Update":
+
+			fmt.Print("Skriv ID på användaren du vill uppdatera: ")
+		
+			id, _ := reader.ReadString('\n')
+			id = strings.TrimSpace(id)
+
+
+			idInput, err := strconv.Atoi(id)
+
+			if err != nil {
+				fmt.Println("ID måste vara ett numbber")
+				continue
+			}
+
+
+			fmt.Print("Type in new name: ")
+
+			newName, _ := reader.ReadString('\n')
+			newName = strings.TrimSpace(newName)
+
+
+			fmt.Print("Type in new age: ")
+
+			newAge, _ := reader.ReadString('\n')
+			newAge = strings.TrimSpace(newAge)
+
+
+			ageInput, err := strconv.Atoi(newAge)
+
+			if err != nil {
+				fmt.Println("ID måste vara ett numbber")
+				continue
+			}
+
+			updated := userService.UpdateUser(idInput, newName, ageInput)
+
+			if updated {
+				fmt.Println("User uppdaterad")
+			} else {
+				fmt.Println("Användaren kunde inte hittas..")
 			}
 
 		case "Exit":

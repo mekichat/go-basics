@@ -34,3 +34,12 @@ func (s *UserService) CreateUser(name string, age int) {
 func (s *UserService) GetUSers() []model.User {
 	return s.repo.GetAll()
 }
+
+
+func (s *UserService) DeleteUser(id int) bool {
+	return s.repo.DeleteByID(id)
+}
+
+func (s *UserService) UpdateUser(id int, name string, age int) bool {
+	return s.repo.UpdateByID(id, name, age)
+}
